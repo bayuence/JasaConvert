@@ -1,0 +1,458 @@
+    <!DOCTYPE html>
+    <html lang="id">
+    <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title>
+    USD2IDR+ - Layanan Konversi
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="style.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg fixed-top">
+            <div class="container">
+              <a class="navbar-brand" href="index.html">
+                <i class="fas fa-exchange-alt me-2"></i>USD2IDR+
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item"><a class="nav-link active" href="#hero">Beranda</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#converter">Konversi</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#features">Fitur</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#about">Tentang</a></li>
+                  <li class="nav-item"><a class="nav-link" href="contact.html">Kontak</a></li>
+                  <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+
+                </ul>
+              </div>
+            </div>
+          </nav>
+          
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+    <div class="container">
+        <div class="row align-items-center">
+        <!-- Kiri: Teks -->
+        <div class="col-lg-6 text-white">
+        <h1 class="hero-title display-4">
+        Konversi USD ke IDR dengan Cepat &amp; Tepat
+        </h1>
+        <p class="hero-subtitle fs-5">
+        Layanan konversi mata uang profesional dengan kurs tetap dan biaya administrasi transparan
+        </p>
+        <div class="badge-rate mb-4">
+        <i class="fas fa-money-bill-wave me-2">
+        </i>
+        <span>
+            Kurs:
+            <strong>
+            Rp15.000/USD
+            </strong>
+        </span>
+        <span class="mx-2">
+            |
+        </span>
+        <i class="fas fa-percentage me-2">
+        </i>
+        <span>
+            Admin:
+            <strong>
+            5%
+            </strong>
+        </span>
+        </div>
+        <div class="d-flex gap-3">
+        <a class="btn btn-light rounded-pill px-4 py-2" href="#converter">
+            <i class="fas fa-calculator me-2">
+            </i>
+            Mulai Konversi
+        </a>
+        <a class="btn btn-outline-light rounded-pill px-4 py-2" href="#features">
+            <i class="fas fa-info-circle me-2">
+            </i>
+            Info Layanan
+        </a>
+        </div>
+        </div>
+        <!-- Converter Section -->
+        <section class="container" id="converter">
+        <div class="converter-card">
+        <h2 class="section-title text-center">
+            Kalkulator Konversi
+        </h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+            <div class="mb-4">
+            <label class="form-label fw-medium" for="usdInput">
+            Jumlah USD yang ingin dikonversi
+            </label>
+            <div class="input-group">
+            <span class="input-group-text">
+                $
+            </span>
+            <input class="form-control form-control-lg" id="usdInput" min="1" placeholder="Masukkan jumlah USD (min. 1)" step="0.01" type="number"/>
+            </div>
+            <div class="form-text mt-2">
+            <i class="fas fa-info-circle me-1 text-primary">
+            </i>
+            Minimal konversi adalah $1 USD
+            </div>
+            </div>
+            <button class="btn btn-convert w-100 py-3" id="convertButton">
+            <i class="fas fa-sync-alt me-2">
+            </i>
+            Hitung Konversi
+            </button>
+            <!-- Output Hasil -->
+            <div class="mt-4 p-4 border rounded bg-light shadow-sm" id="result" style="display: none;">
+            </div>
+            </div>
+        </div>
+        </div>
+        </section>
+        <!-- Result Card -->
+        <div class="result-card" id="resultCard">
+        <div class="result-header">
+        <h5 class="mb-0">
+            Hasil Konversi
+        </h5>
+        </div>
+        <div class="result-body">
+        <div class="result-row">
+            <span class="result-label">
+            Jumlah USD
+            </span>
+            <span class="result-value" id="usdAmount">
+            -
+            </span>
+        </div>
+        <div class="result-row">
+            <span class="result-label">
+            Kurs Konversi
+            </span>
+            <span class="result-value">
+            Rp15.000/USD
+            </span>
+        </div>
+        <div class="result-row">
+            <span class="result-label">
+            Total IDR (sebelum admin)
+            </span>
+            <span class="result-value" id="idrGross">
+            -
+            </span>
+        </div>
+        <div class="result-row">
+            <span class="result-label">
+            Biaya Admin (5%)
+            </span>
+            <span class="result-value text-danger" id="adminFee">
+            -
+            </span>
+        </div>
+        <div class="total-row result-row">
+            <span class="result-label fs-5">
+            Total Diterima
+            </span>
+            <span class="total-value" id="idrNet">
+            -
+            </span>
+        </div>
+        </div>
+        </div>
+        </div>
+    </div>
+    </section>
+    <!-- Features Section -->
+    <section class="container py-5" id="features">
+    <h2 class="section-title text-center">
+        Keunggulan Layanan
+    </h2>
+    <div class="row g-4">
+        <div class="col-md-4">
+        <div class="feature-card">
+        <div class="feature-icon">
+        <i class="fas fa-bolt">
+        </i>
+        </div>
+        <h4 class="feature-title">
+        Cepat &amp; Efisien
+        </h4>
+        <p>
+        Konversi mata uang dalam hitungan detik tanpa perlu proses yang rumit. Hasil langsung didapat.
+        </p>
+        </div>
+        </div>
+        <div class="col-md-4">
+        <div class="feature-card">
+        <div class="feature-icon">
+        <i class="fas fa-shield-alt">
+        </i>
+        </div>
+        <h4 class="feature-title">
+        Kurs Tetap
+        </h4>
+        <p>
+        Nikmati kurs tetap Rp15.000 per USD tanpa fluktuasi pasar yang membingungkan.
+        </p>
+        </div>
+        </div>
+        <div class="col-md-4">
+        <div class="feature-card">
+        <div class="feature-icon">
+        <i class="fas fa-glasses">
+        </i>
+        </div>
+        <h4 class="feature-title">
+        Transparansi Penuh
+        </h4>
+        <p>
+        Semua biaya ditampilkan dengan jelas termasuk biaya admin 5%. Tidak ada biaya tersembunyi.
+        </p>
+        </div>
+        </div>
+        <div class="col-md-4">
+        <div class="feature-card">
+        <div class="feature-icon">
+        <i class="fas fa-mobile-alt">
+        </i>
+        </div>
+        <h4 class="feature-title">
+        Mobile Friendly
+        </h4>
+        <p>
+        Akses layanan dari perangkat apapun dengan tampilan yang responsif dan mudah digunakan.
+        </p>
+        </div>
+        </div>
+        <div class="col-md-4">
+        <div class="feature-card">
+        <div class="feature-icon">
+        <i class="fas fa-lock">
+        </i>
+        </div>
+        <h4 class="feature-title">
+        Aman &amp; Terpercaya
+        </h4>
+        <p>
+        Layanan yang aman tanpa perlu memasukkan data sensitif atau informasi pribadi.
+        </p>
+        </div>
+        </div>
+        <div class="col-md-4">
+        <div class="feature-card">
+        <div class="feature-icon">
+        <i class="fas fa-headset">
+        </i>
+        </div>
+        <h4 class="feature-title">
+        Dukungan Pengguna
+        </h4>
+        <p>
+        Tim support siap membantu Anda dengan pertanyaan seputar layanan konversi kami.
+        </p>
+        </div>
+        </div>
+    </div>
+    </section>
+    <!-- About Section -->
+    <section class="container" id="about">
+    <div class="about-section">
+        <div class="row g-0">
+        <div class="col-lg-7">
+        <div class="about-content">
+        <h2 class="section-title">
+            Tentang USD2IDR+
+        </h2>
+        <p class="lead mb-4">
+            Platform konversi mata uang modern yang menyediakan layanan cepat dan transparan
+        </p>
+        <p>
+            USD2IDR+ dikembangkan dengan fokus pada kemudahan penggunaan dan transparansi. Kami menyediakan kalkulator konversi yang cepat dan akurat dengan kurs tetap sebesar Rp15.000 per USD dan biaya administrasi 5% yang diinformasikan dengan jelas.
+        </p>
+        <p>
+            Platform ini adalah solusi ideal untuk mahasiswa, pebisnis, dan traveler yang membutuhkan estimasi cepat untuk konversi USD ke Rupiah.
+        </p>
+        <h5 class="mt-4 mb-3">
+            Cara Menggunakan Layanan:
+        </h5>
+        <div class="d-flex align-items-start mb-3 step-card">
+            <div class="step-number">
+            1
+            </div>
+            <div>
+            <h6 class="mb-1">
+            Masukkan Jumlah USD
+            </h6>
+            <p class="mb-0">
+            Isi jumlah USD yang ingin dikonversi ke dalam form (minimal $1)
+            </p>
+            </div>
+        </div>
+        <div class="d-flex align-items-start mb-3 step-card">
+            <div class="step-number">
+            2
+            </div>
+            <div>
+            <h6 class="mb-1">
+            Klik Tombol Hitung
+            </h6>
+            <p class="mb-0">
+            Tekan tombol "Hitung Konversi" untuk melakukan kalkulasi
+            </p>
+            </div>
+        </div>
+        <div class="d-flex align-items-start mb-3 step-card">
+            <div class="step-number">
+            3
+            </div>
+            <div>
+            <h6 class="mb-1">
+            Lihat Hasil Konversi
+            </h6>
+            <p class="mb-0">
+            Tinjau hasil konversi beserta rincian biaya admin
+            </p>
+            </div>
+        </div>
+        <div class="d-flex align-items-start step-card">
+            <div class="step-number">
+            4
+            </div>
+            <div>
+            <h6 class="mb-1">
+            Dapatkan Total Akhir
+            </h6>
+            <p class="mb-0">
+            Lihat total akhir yang akan diterima dalam Rupiah
+            </p>
+            </div>
+        </div>
+        </div>
+        </div>
+        <div class="col-lg-5">
+        <div class="about-image">
+        <i class="fas fa-dollar-sign">
+        </i>
+        <i class="fas fa-arrow-right mx-3">
+        </i>
+        <i class="fas fa-rupiah-sign">
+        </i>
+        </div>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <div class="text-center mb-5">
+        <a href="page2.html" class="btn btn-primary px-4 py-2 rounded-pill">
+          Selanjutnya <i class="fas fa-arrow-right ms-2"></i>
+        </a>
+      </div>
+      
+    
+    <!-- Footer -->
+    <footer class="footer">
+    <div class="container">
+        <div class="row">
+        <div class="col-md-6">
+        <h4 class="footer-heading">
+        USD2IDR+
+        </h4>
+        <p>
+        Layanan konversi mata uang USD ke IDR dengan tampilan modern dan proses yang cepat.
+        </p>
+        <div class="social-icons">
+        <a class="social-icon" href="#">
+            <i class="fab fa-facebook-f">
+            </i>
+        </a>
+        <a class="social-icon" href="#">
+            <i class="fab fa-twitter">
+            </i>
+        </a>
+        <a class="social-icon" href="#">
+            <i class="fab fa-instagram">
+            </i>
+        </a>
+        <a class="social-icon" href="#">
+            <i class="fab fa-linkedin-in">
+            </i>
+        </a>
+        </div>
+        </div>
+        <div class="col-md-3 mt-4 mt-md-0">
+        <h5 class="footer-heading">
+        Navigasi
+        </h5>
+        <ul class="list-unstyled">
+        <li class="mb-2">
+            <a class="text-white text-decoration-none" href="#hero">
+            Beranda
+            </a>
+        </li>
+        <li class="mb-2">
+            <a class="text-white text-decoration-none" href="#converter">
+            Konversi
+            </a>
+        </li>
+        <li class="mb-2">
+            <a class="text-white text-decoration-none" href="#features">
+            Fitur
+            </a>
+        </li>
+        <li>
+            <a class="text-white text-decoration-none" href="#about">
+            Tentang
+            </a>
+        </li>
+        </ul>
+        </div>
+        <div class="col-md-3 mt-4 mt-md-0">
+        <h5 class="footer-heading">
+        Hubungi Kami
+        </h5>
+        <ul class="list-unstyled">
+        <li class="mb-2">
+            <i class="fas fa-phone me-2">
+            </i>
+            +62 856 0476 9294
+        </li>
+        <li class="mb-2">
+            <i class="fas fa-phone me-2">
+            </i>
+            +62 822 7395 2703
+        </li>
+        <li>
+            <i class="fas fa-map-marker-alt me-2">
+            </i>
+            Surabaya, Indonesia
+        </li>
+        </ul>
+        </div>
+        </div>
+        <div class="copyright">
+        <p class="mb-0">
+        © 2025 USD2IDR+ | Owner: Riee and Ence
+        </p>
+        <small>
+        Developed for Final Project
+        </small>
+        </div>
+    </div>
+    </footer>
+    <!-- Add Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+    <script src="script.js">
+    </script>
+    </body>
+    </html>
